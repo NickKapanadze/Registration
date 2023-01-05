@@ -34,7 +34,6 @@ app = Flask(__name__)
 @app.route("/")
 def index():
   return render_template('index.html')
-  app.config['SERVER_NAME'] = website_url
 
 
 @app.route("/get2")
@@ -231,7 +230,7 @@ def updatereadme():
   return "done!"
 
 
-IID = False
+IID = True
 print(IID)
 
 if IID == False:

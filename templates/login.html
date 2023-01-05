@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+</head>
+<body>
+    <a href="/">go back</a>
+
+    <p>Log in</p>
+
+    <form id="Form2" >
+        <input itemid="username1" type="text" id="username1" required placeholder="Enter Name"
+oninvalid="this.setCustomValidity('Enter User password Here')"
+oninput="this.setCustomValidity('')"/>
+
+    <input itemid="password1" type="text" id="password1" required placeholder="Enter password"
+  oninvalid="this.setCustomValidity('Enter User password Here')"
+  oninput="this.setCustomValidity('')"/> 
+
+  <input type="submit" />
+    </form>
+
+    <script>
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        document.getElementById("Form2").onsubmit = function() {submit1()};
+
+        var form = document.getElementById("Form2");
+        function handleForm(event) { event.preventDefault(); } 
+        form.addEventListener('submit', handleForm);
+
+        function submit1(){
+            let usernameV = document.getElementById("username1").value
+            let passwordV = document.getElementById("password1").value
+            fetch(`/LogInC?Username=${usernameV}&Password=${passwordV}`).then((response) => {
+                response.text().then((txt) => {
+                    if (txt == 'U is wrong'){
+                        alert('Username is not correct.')
+                    } else{
+                        if (txt == 'P is wrong'){
+                            alert('Password is not correct.')
+                        } else {
+                            console.log(txt)
+                            let TOKEN = txt;
+                            document.cookie = "Token=" + TOKEN;
+                            alert('successfully logged in')
+                            sleep(300)
+                            window.location.href = '/';
+                        }
+                    }
+                })
+            })
+        }
+    </script>
+</body>
+</html>

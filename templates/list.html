@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get</title>
+
+    <style>
+        #main_cont{
+            padding-left: 35px;
+            padding-bottom: 30px;
+            padding-right: 35px;
+            padding-top: 20px;
+        }
+        .info_div{
+            background-color: lightslategrey;
+            padding-left: 15px;
+            padding-bottom: 10px;
+            padding-right: 15px;
+            padding-top: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            color: beige;
+            border: none;
+            border-radius: 30px;
+
+            margin-bottom: 30px;
+
+            width: 40%;
+        }
+    </style>
+</head>
+<body onload="GetC()">
+    <a href="/">go back</a>
+<div id="main_cont">
+    
+</div>
+
+<script>
+    function GetC(){
+        fetch(`/getCC`).then((response) => {
+                response.text().then((txt) => {
+                    let AC = txt
+                    console.log(AC)
+                    GetB(txt);
+                })
+        })
+    }
+
+    function GetB(cou){
+        for (let i = cou; i > 0; i--) {
+            fetch(`/GetB_N?U_ID=${i}`).then((response) => {
+                response.text().then((txt) => {
+                    console.log(txt)
+                    let div_name_text = txt
+                    fetch(`/GetB_RM?U_ID=${i}`).then((response) => {
+                        response.text().then((txt) => {
+                            console.log(txt)
+                            let div_RM_text = txt
+                            const div = document.createElement('div');
+                            
+                            div.className = 'info_div';
+                            
+                            div.innerHTML = `
+                            <h1>${div_name_text}</h1>
+                            <P>${div_RM_text}</P>
+                            `;
+                            
+                            document.getElementById('main_cont').appendChild(div);
+                        })
+                    })
+                })
+            })
+        }
+    }
+</script>
+</body>
+</html>

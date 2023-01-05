@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+</head>
+<body>
+    this us sign up page
+
+    <a href="/">go back to home</a>
+
+    <br><br>
+
+<form id="Form1" >
+
+<input itemid="username1" type="text" id="username1" required placeholder="Enter Name"
+oninvalid="this.setCustomValidity('Enter User password Here')"
+oninput="this.setCustomValidity('')"/>
+
+    <input itemid="password1" type="text" id="password1" required placeholder="Enter password"
+  oninvalid="this.setCustomValidity('Enter User password Here')"
+  oninput="this.setCustomValidity('')"/>
+
+  <input itemid="password2" type="text" id="password2" required placeholder="Confirm password"
+  oninvalid="this.setCustomValidity('Enter User password Here too')"
+  oninput="this.setCustomValidity('')"/>
+
+    <input type="submit" />
+</form>
+
+
+
+<script>
+document.getElementById("Form1").onsubmit = function() {submit1()};
+
+var form = document.getElementById("Form1");
+function handleForm(event) { event.preventDefault(); } 
+form.addEventListener('submit', handleForm);
+
+function submit1(){
+
+    pass1 = document.getElementById("password1").value
+    pass2 = document.getElementById("password2").value
+    if (pass1 == pass2){
+    console.log("yes");
+    
+
+    UsernameValue = document.getElementById("username1").value
+    if(UsernameValue != null){
+        pass1 = document.getElementById("password1").value
+        pass2 = document.getElementById("password2").value
+        UsernameValue = document.getElementById("username1").value
+
+        console.log('pass1');
+        console.log(pass1);
+        console.log('pass2');
+        console.log(pass2);
+        console.log('Username');
+        console.log(UsernameValue);
+
+        console.log('fatch:');
+        console.log(`/register?username=${UsernameValue}&password=${pass1}`);
+
+        fetch(`/register?username=${UsernameValue}&password=${pass1}`,{ method: "GET" }).then((response) => {
+            response.text().then((txt) => {
+                if (txt == 'You already have an account.') {
+                    if (txt == 'error.') {
+                        alert('An error occured')
+                    } else {
+                        alert('You already have an account.')
+                    }
+                } else {
+                        alert('successfully signed up.')
+                        let TOKEN = txt;
+                        document.cookie = "Token=" + TOKEN;
+                        sleep(300)
+                        window.location.href = '/';
+                }
+            })
+        })
+    } else {
+        //pass
+    };
+    } else {
+        console.log("no");
+        console.log(pass1);
+        console.log(pass2);
+    };
+}
+</script>
+
+</body>
+</html>

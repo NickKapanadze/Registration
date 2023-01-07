@@ -15,6 +15,7 @@ import smtplib
 import random
 
 
+
 def convertTuple(tup):
   if tup is not None:
         # initialize an empty string
@@ -54,7 +55,7 @@ def sendEC(user_token, code):
   EmailA = c.fetchone()
   EmailA = convertTuple(EmailA)
   email_sender = 'nikitaapp03102023@gmail.com'
-  email_password = 'zgdgfxsleweqkmhs'
+  email_password = os.environ['nikitaapp03102023@gmail.com']
   email_receiver = EmailA
     
   subject = 'Verify you Email'

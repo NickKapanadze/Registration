@@ -5,79 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+
+    <link rel="icon" href="static/icon/favicon.ico" sizes="any"><!-- 32×32 -->
+    <link rel="icon" href="static/icon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="static/icon/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="static/icon/site.webmanifest">
+
+    <link rel="stylesheet" href="/static/css/Header.css">
+    <link rel="stylesheet" href="/static/css/Profile.css">
 </head>
-<body onload="DINY()">
-    <a href="/">go back</a>
+<body>
+    <div class="header">
+        <a href="/" class="logo"><img src="static/icon/android-chrome-192x192.png"></a>
+          <div class="header-right">
+            <a href="LogIn" class="IDKYB">Log In</a>
+            <a href="SignUp" class="IDKYB">Sign Up</a>
+            <div class="dropdown">
+              <a href="/profile" class="IKUText dropbtn" id="UsernameText"></a>
+              <div class="dropdown-content">
+                <a href="/editprofile">Edit profile</a>
+                <a href="#">Link 2</a>
+                <a onclick="LU()" href="#">Log out</a>
+              </div>
+            </div>
+          </div>
+    </div>
 
-    <h1 id="username_text"></h1>
 
-    <p>edit read me</p>
-    <textarea id="Read_me_box" value='''></textarea>
-<br>
-    <button onclick="updateRM()">done!</button>
+    <div id="banner_conteiner">
+    <div id="banner_box">
+        <img src="static/images/Dbanner.png">
+    </div>
+    <div id="UnderBanner_box">
+        <div id="UnderBanner_box_box">
+        <div id="pfpbox">
+            <div id="pfpbackgroundbox">
+                <img id="mainPFP" class="Apfp" src="static/images/blank-profile-picture-973460_1280.webp">
+            </div>
+        </div>
+        <div id="namebox"></div>
+        <div id="bunsbox"></div>
+        </div>
+        <div id="UnderBanner_box_unerbox">
 
-    <script src="{{url_for('static', filename='getcookie.js')}}"></script>
-    <script>
-
-
-        function DINY(){
-            let myCookie = getCookie("Token");
-            console.log(myCookie);
-            if (myCookie == null) {
-                window.location.href = '/';
-            } else {
-                if (myCookie == "") {
-                    window.location.href = '/';
-                } else {
-                    sendC()
-                }
-            }
-        } 
+        </div>
+    </div>
+    <div id="underBannerLine">
+        <div id="Line"></div>
+    </div>
+    </div>
     
-
-        function sendC() {
-            let Cookie = getCookie("Token");
-            
-
-            fetch(`/readname?userT=${Cookie}`).then((response) => {
-                response.text().then((txt) => {
-                    
-                    var username = txt
-                    console.log(username)
-                    document.getElementById("username_text").innerHTML = username;
-
-                    fetch(`/readreadme?userT=${Cookie}`).then((response) => {
-                        response.text().then((txt) => {
-                            
-
-                            var aboutmetext = txt
-                            console.log(aboutmetext)
-                            document.getElementById("Read_me_box").value = aboutmetext;
-                        })
-                    })
-
-                })
-
-            })
-
-            
-
-        };
-
-        function updateRM() {
-            let coockie = document.cookie;
-
-            coockie = coockie.substring(6, 50);
-
-            console.log(coockie);
-
-            let nRMTXT = document.getElementById("Read_me_box").value
-            
-            fetch(`/updatereadme?nRM=${nRMTXT}&userT=${coockie}`)
-
-            alert("done!")
-        }
-
-    </script>
+    <script src="{{url_for('static', filename='js/DINY.js')}}"></script>
+    <script src="{{url_for('static', filename='js/getcookie.js')}}"></script>
+    <script src="{{url_for('static', filename='js/logout.js')}}"></script>
+    <script src="{{url_for('static', filename='js/header.js')}}"></script>
+    <script src="{{url_for('static', filename='js/profile.js')}}"></script>
 </body>
 </html>

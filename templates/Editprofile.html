@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+
+    <link rel="icon" href="static/icon/favicon.ico" sizes="any"><!-- 32×32 -->
+    <link rel="icon" href="static/icon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="static/icon/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="static/icon/site.webmanifest">
+</head>
+<body>
+    <a href="/">go back</a>
+    <h1 id="username_text"></h1>
+    <p>edit read me</p>
+    <textarea id="Read_me_box" value='''></textarea>
+<br>
+    <button onclick="updateRM()">done!</button>
+
+    <script src="{{url_for('static', filename='js/header.js')}}"></script>
+    <script src="{{url_for('static', filename='js/getcookie.js')}}"></script>
+    <script src="{{url_for('static', filename='js/DINY.js')}}"></script>
+    <script src="{{url_for('static', filename='js/editprofile.js')}}"></script>
+</body>
+</html>

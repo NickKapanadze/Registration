@@ -4,34 +4,37 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Home</title>
+
+  <link rel="icon" href="static/icon/favicon.ico" sizes="any"><!-- 32×32 -->
+  <link rel="apple-touch-icon" href="static/icon/apple-touch-icon.png"><!-- 180×180 -->
+  <link rel="manifest" href="/static/icon/site.webmanifest">
+
+  <link rel="stylesheet" href="static/css/Header.css">
+  <link rel="stylesheet" href="static/css/home.css">
 </head>
 <body>
-  <div id="header_div">
-      <div style="flex-grow: 1;">
-        <a href="/">home</a>
-      </div>
-      <div style="flex-grow: 1;">
-        <a href="get">get</a>
-      </div>
-      <div style="flex-grow: 1;">
-        <a href="LogIn">Log In</a>
-      </div>
-      <div style="flex-grow: 1;">
-        <a href="SignUp">Sign Up</a>
-      </div>
-      <div style="flex-grow: 2;">
-        <a href="profile">Edit profile</a>
+  <div class="header">
+    <a href="/" class="logo"><img src="static/icon/android-chrome-192x192.png"></a>
+      <div class="header-right">
+        <a href="LogIn" class="IDKYB">Log In</a>
+        <a href="SignUp" class="IDKYB">Sign Up</a>
+        <div class="dropdown">
+          <a href="/profile" class="IKUText dropbtn" id="UsernameText"></a>
+          <div class="dropdown-content">
+            <a href="/editprofile">Edit profile</a>
+            <a href="#">Link 2</a>
+            <a onclick="LU()" href="#">Log out</a>
+          </div>
+        </div>
       </div>
   </div>
 
-  <h1 id="doiknowyou" style="display: block;">Do I know you?</h1>
-  <h1 id="Iknowyou" style="display: none;"></h1>
-  
-  <button onclick="LU()">Log out</button>
+  <a href="get">get</a>
 
-  <script src="{{url_for('static', filename='getcookie.js')}}"></script>
-  <script src="{{url_for('static', filename='logout.js')}}"></script>
-  <script src="{{url_for('static', filename='DINY.js')}}"></script>
-  <script src="{{url_for('static', filename='mainpage.js')}}"></script>
+
+  <script src="{{url_for('static', filename='js/getcookie.js')}}"></script>
+  <script src="{{url_for('static', filename='js/logout.js')}}"></script>
+  <script src="{{url_for('static', filename='js/DINY.js')}}"></script>
+  <script src="{{url_for('static', filename='js/mainpage.js')}}"></script>
 </body>
 </html>

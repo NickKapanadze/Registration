@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+
+    <link rel="icon" href="static/icon/favicon.ico" sizes="any"><!-- 32×32 -->
+    <link rel="icon" href="static/icon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="static/icon/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="static/icon/site.webmanifest">
+</head>
+<body>
+    <a href="/">home</a>
+    <br>
+    <h1>Verify you Email</h1>
+    <br>
+    <label>enter Verification code</label>
+    <input type="text" id="CodeInput" maxlength="4" placeholder="here">
+    <button onclick="CheckEvCode(Token)">Done</button>
+    <script src="{{url_for('static', filename='js/getcookie.js')}}"></script>
+    <script src="{{url_for('static', filename='js/DINY.js')}}"></script>
+    <script src="{{url_for('static', filename='js/VEmail.js')}}"></script>
+    <script src="{{url_for('static', filename='js/sleep.js')}}"></script>
+</body>
+</html>

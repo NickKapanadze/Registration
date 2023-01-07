@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
+
+    <link rel="icon" href="static/icon/favicon.ico" sizes="any"><!-- 32×32 -->
+    <link rel="icon" href="static/icon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="static/icon/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="static/icon/site.webmanifest">
 </head>
 <body>
     this us sign up page
@@ -16,7 +21,11 @@
 <form id="Form1" >
 
 <input itemid="username1" type="text" id="username1" required placeholder="Enter Name"
-oninvalid="this.setCustomValidity('Enter User password Here')"
+oninvalid="this.setCustomValidity('Enter Username Here')"
+oninput="this.setCustomValidity('')"/>
+
+<input itemid="EmailA" type="text" id="EmailA" required placeholder="Enter Email address"
+oninvalid="this.setCustomValidity('Enter User Email address Here')"
 oninput="this.setCustomValidity('')"/>
 
     <input itemid="password1" type="text" id="password1" required placeholder="Enter password"
@@ -24,70 +33,42 @@ oninput="this.setCustomValidity('')"/>
   oninput="this.setCustomValidity('')"/>
 
   <input itemid="password2" type="text" id="password2" required placeholder="Confirm password"
-  oninvalid="this.setCustomValidity('Enter User password Here too')"
+  oninvalid="this.setCustomValidity('Confirm User password Here')"
   oninput="this.setCustomValidity('')"/>
 
     <input type="submit" />
 </form>
 
 
-
+<script src="{{url_for('static', filename='js/signup.js')}}"></script>
+<script src="{{url_for('static', filename='js/sleep.js')}}"></script>
 <script>
-document.getElementById("Form1").onsubmit = function() {submit1()};
-
-var form = document.getElementById("Form1");
-function handleForm(event) { event.preventDefault(); } 
-form.addEventListener('submit', handleForm);
-
 function submit1(){
-
-    pass1 = document.getElementById("password1").value
-    pass2 = document.getElementById("password2").value
-    if (pass1 == pass2){
-    console.log("yes");
-    
-
-    UsernameValue = document.getElementById("username1").value
-    if(UsernameValue != null){
-        pass1 = document.getElementById("password1").value
-        pass2 = document.getElementById("password2").value
-        UsernameValue = document.getElementById("username1").value
-
-        console.log('pass1');
-        console.log(pass1);
-        console.log('pass2');
-        console.log(pass2);
-        console.log('Username');
-        console.log(UsernameValue);
-
-        console.log('fatch:');
-        console.log(`/register?username=${UsernameValue}&password=${pass1}`);
-
-        fetch(`/register?username=${UsernameValue}&password=${pass1}`,{ method: "GET" }).then((response) => {
+passValue = document.getElementById("password1").value
+passValue = document.getElementById("password2").value
+UsernameValue = document.getElementById("username1").value
+EmailValue = document.getElementById("EmailA").value
+if (passValue == passValue){
+    fetch(`/register?username=${UsernameValue}&Email=${EmailValue}&password=${passValue}`,{ method: "GET" }).then((response) => {
             response.text().then((txt) => {
                 if (txt == 'You already have an account.') {
-                    if (txt == 'error.') {
-                        alert('An error occured')
-                    } else {
-                        alert('You already have an account.')
-                    }
+                    alert(txt)
+                } else if (txt == 'Email is Invalid.') {
+                    alert(txt)
+                } else if (txt == 'Email is Used.') {
+                    alert(txt)
                 } else {
                         alert('successfully signed up.')
                         let TOKEN = txt;
                         document.cookie = "Token=" + TOKEN;
                         sleep(300)
-                        window.location.href = '/';
+                        window.location.href = '/Vemail';
                 }
             })
-        })
-    } else {
-        //pass
-    };
-    } else {
-        console.log("no");
-        console.log(pass1);
-        console.log(pass2);
-    };
+        })    
+} else {
+    alert('passwords do not match.')
+}
 }
 </script>
 

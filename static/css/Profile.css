@@ -1,0 +1,121 @@
+* {box-sizing: border-box;}
+
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#banner_conteiner{
+    width: 100%;
+    height: 630px;
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+#banner_box{
+    display: flex;
+    z-index: -3;
+    height: 460px;
+    width: 100%;
+    flex-direction: column;
+
+    background-color: #454545;
+}
+
+#banner_box img{
+    z-index: -2;
+    width: 1280px;
+    height: 620px;
+    cursor: pointer;
+
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#UnderBanner_box{
+    z-index: -2;
+    height: 150px;
+    width: 100%;
+    background-color: #454545;
+
+
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#UnderBanner_box_box{
+    width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 80px;
+    padding-right: 80px;
+    
+    position: absolute;
+}
+
+#pfpbox{
+    flex-grow: 2;
+}
+
+#pfpbackgroundbox{
+    height: 175px;
+    width: 175px;
+}
+
+#pfpbackgroundbox{
+    height: 190px;
+    width: 190px;
+    border-radius: 50%;
+    background-color: #454545;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#pfpbackgroundbox img{
+    height: 168px;
+    width: 168px;
+
+    border-radius: 50%;
+}
+
+#namebox{
+    flex-grow: 5;
+}
+
+#bunsbox{
+    flex-grow: 3;
+}
+
+#UnderBanner_box_unerbox{
+    width: 100%;
+    height: 20px;
+}
+
+#underBannerLine{
+    background-color: #454545;
+    height: 20px;
+}
+
+
+#Line{
+    border-top: 1px solid rgb(210, 210, 210);
+    height: 1px;
+    width: 1060px;
+
+    margin-left: auto;
+    margin-right: auto;
+}
